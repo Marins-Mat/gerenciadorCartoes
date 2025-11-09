@@ -1,0 +1,53 @@
+package controller;
+
+import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import model.Usuario;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.util.Map;
+
+import com.google.gson.Gson;
+
+import DAO.UsuarioDAO;
+import DTO.UsuarioDTO;
+
+@WebServlet(urlPatterns = { "/loginServlet", "/login" })
+public class loginServlet extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+
+	public loginServlet() {
+		super();
+
+	}
+
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+
+	}
+
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		response.setContentType("application/json");
+		response.setCharacterEncoding("UTF-8");
+
+		BufferedReader reader = request.getReader();
+		Gson gson = new Gson();
+		UsuarioDTO usrDTO = gson.fromJson(reader, UsuarioDTO.class);
+
+		String login = usrDTO.getLogin();
+		String senha = usrDTO.getSenha();
+
+		UsuarioDAO userDAO = new UsuarioDAO();
+		Usuario usr = userDAO.validarUsuario(login, senha);
+
+		boolean valido = usr != null;
+		response.getWriter().print(new Gson().toJson(Map.of("sucesso", valido)));
+
+	}
+
+}

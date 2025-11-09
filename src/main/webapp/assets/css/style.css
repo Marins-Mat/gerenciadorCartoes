@@ -1,0 +1,42 @@
+@charset "UTF-8";
+
+*{
+	margin: 0;
+	padding: 0;
+}
+
+body {
+	background-color: rgb(50, 50, 126);
+	color: black;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 100vh;
+}
+
+.login{
+	background-color: rgb(179, 179, 179);
+	width: 40vw;
+	height: 60vh;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	border-radius: 15px;
+	box-shadow: 2px 3px 3px 3px rgba(0, 0, 0, 0.6);
+}
+
+.camposUsr{
+	margin-top: 60px;
+}
+input {
+	padding: 10px;
+	margin: 10px;
+	border-radius: 10px;
+}
+
+.btnLogin{
+	padding: 10px 20px;
+	margin: 10px;
+	border-radius: 10px;
+}

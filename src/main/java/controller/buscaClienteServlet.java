@@ -5,19 +5,20 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import model.Conta;
 
 import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.ArrayList;
 
 import com.google.gson.Gson;
 
 import DAO.ClienteDAO;
 
-
 @WebServlet("/buscaClienteServlet")
 public class buscaClienteServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-
 
 	public buscaClienteServlet() {
 		super();
@@ -29,6 +30,7 @@ public class buscaClienteServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
+
 	class CpfRequest {
 		String cpf;
 	}
@@ -43,10 +45,15 @@ public class buscaClienteServlet extends HttpServlet {
 
 		CpfRequest req = gson.fromJson(reader, CpfRequest.class);
 		String cpf = req.cpf;
-		
+
 		ClienteDAO dao = new ClienteDAO();
-		dao.pegarCartoes(cpf);
+		ArrayList<Conta> contas = dao.pegarCartoes(cpf);
+
+		PrintWriter writer = response.getWriter();
+		String json = gson.toJson(contas);
+		writer.print(json);
+		writer.flush();
 
 	}
-	
+
 }

@@ -9,6 +9,7 @@ import model.Usuario;
 
 import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.Map;
 
 import com.google.gson.Gson;
@@ -46,7 +47,10 @@ public class loginServlet extends HttpServlet {
 		Usuario usr = userDAO.validarUsuario(login, senha);
 
 		boolean valido = usr != null;
-		response.getWriter().print(new Gson().toJson(Map.of("sucesso", valido)));
+		PrintWriter writer = response.getWriter();
+		String json = gson.toJson(Map.of("sucesso", valido));
+		writer.print(json);
+		writer.flush();
 
 	}
 

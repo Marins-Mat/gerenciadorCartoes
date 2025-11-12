@@ -1,6 +1,4 @@
 
-
-
 function logar() {
 	let login = document.getElementById("login");
 	let senha = document.getElementById("senha");
@@ -17,6 +15,7 @@ function logar() {
 		})
 	}).then(res => res.json())
 		.then(data => {
+
 			if (data.sucesso) {
 				msg.style.visibility = "hidden";
 				window.location.href = "templates/buscaCliente.html";
@@ -40,7 +39,7 @@ function logar() {
 
 function buscarCliente() {
 	let cpf = document.getElementById("cpf");
-	
+
 
 
 	fetch("http://localhost:8080/gerenciadorCartoes/buscaClienteServlet", {
@@ -55,7 +54,14 @@ function buscarCliente() {
 
 	}).then(res => res.json())
 		.then(data => {
-			console.log(data);
+			let msg = document.getElementById("naoEncontrado");
+			if (data.length == 0) {
+				msg.style.visibility = "visible";
+			} else {
+				msg.style.visibility = "hidden";
+				window.location.href = "cartoesCliente.html";
+			}
+
 		})
 		.catch(err => {
 			console.error("Erro na requisição: ", err);

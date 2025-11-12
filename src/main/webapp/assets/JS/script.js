@@ -1,3 +1,6 @@
+
+
+
 function logar() {
 	let login = document.getElementById("login");
 	let senha = document.getElementById("senha");
@@ -34,20 +37,53 @@ function logar() {
 
 }
 
-/*
+
 function buscarCliente() {
 	let cpf = document.getElementById("cpf");
 
-	
+
 	fetch("http://localhost:8080/gerenciadorCartoes/buscaClienteServlet", {
-			method: "POST",
-			headers: {
-				"Content-Type": "application/json"
-			},
-			body: JSON.stringify({
-				cpf: cpf.value
-			})
-		}
+		method: "POST",
+		headers: {
+			"Content-Type": "application/json"
+		},
+		body: JSON.stringify({
+			cpf: cpf.value
+		})
+
+
+	}).then(res => res.json())
+		.then(data => {
+
+		})
+		.catch(err => {
+			console.error("Erro na requisição: ", err);
+		})
 		
-		}
-	*/
+}
+
+
+
+function exibirContas() {
+
+
+
+	let novaConta = document.createElement("div");
+	novaConta.classList.add("conta");
+
+	let nomeEst = document.createElement("h2");
+	nomeEst.textContent = `Estabelecimento: `;
+
+	let nomeTitular = document.createElement("p");
+	nomeTitular.textContent = `Nome do titular: `;
+
+	let status = document.createElement("p");
+	status.textContent = `Status da conta: `;
+
+	novaConta.appendChild(nomeEst);
+	novaConta.appendChild(nomeTitular);
+	novaConta.appendChild(status);
+
+
+	document.getElementById("contas").appendChild(novaConta);
+}

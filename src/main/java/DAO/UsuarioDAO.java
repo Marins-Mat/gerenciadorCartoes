@@ -6,9 +6,8 @@ import java.sql.ResultSet;
 
 import model.Usuario;
 
-public class UsuarioDAO extends DAO{
+public class UsuarioDAO extends DAO {
 
-	
 	public Usuario validarUsuario(String login, String senha) {
 		String sql = "Select * from usuario Where login = ? And senha = ?";
 		try {

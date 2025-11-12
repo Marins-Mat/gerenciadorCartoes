@@ -40,6 +40,7 @@ function logar() {
 
 function buscarCliente() {
 	let cpf = document.getElementById("cpf");
+	
 
 
 	fetch("http://localhost:8080/gerenciadorCartoes/buscaClienteServlet", {
@@ -54,12 +55,12 @@ function buscarCliente() {
 
 	}).then(res => res.json())
 		.then(data => {
-
+			console.log(data);
 		})
 		.catch(err => {
 			console.error("Erro na requisição: ", err);
 		})
-		
+	cpf.value = '';
 }
 
 

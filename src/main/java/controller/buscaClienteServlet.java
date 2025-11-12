@@ -29,7 +29,9 @@ public class buscaClienteServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
-
+	class CpfRequest {
+		String cpf;
+	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
@@ -39,12 +41,12 @@ public class buscaClienteServlet extends HttpServlet {
 		BufferedReader reader = request.getReader();
 		Gson gson = new Gson();
 
-		int cpf = gson.fromJson(reader, Integer.class);
-
+		CpfRequest req = gson.fromJson(reader, CpfRequest.class);
+		String cpf = req.cpf;
+		
 		ClienteDAO dao = new ClienteDAO();
-
 		dao.pegarCartoes(cpf);
 
 	}
-
+	
 }

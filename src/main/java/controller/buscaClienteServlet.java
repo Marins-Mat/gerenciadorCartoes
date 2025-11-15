@@ -16,7 +16,7 @@ import com.google.gson.Gson;
 
 import DAO.ClienteDAO;
 
-@WebServlet("/buscaClienteServlet")
+@WebServlet("/buscaCliente")
 public class buscaClienteServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 

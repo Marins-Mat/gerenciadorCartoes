@@ -2,15 +2,19 @@ package model;
 
 public class Conta {
 	private int cod_conta;
-	private String status;
 	private String nome_cliente;
+	private int cod_cliente;
 	private String nome_estabelecimento;
+	private int cod_estabelecimento;
+	private String status;
 	
 
-	public Conta(int cod_conta, String status, String nome_cliente, String nome_estabelecimento) {
+	public Conta(int cod_conta, int cod_cliente, String nome_cliente, String nome_estabelecimento, int cod_estabelecimento, String status) {
 		this.cod_conta = cod_conta;
 		this.status = status;
+		this.cod_cliente = cod_cliente;
 		this.nome_cliente = nome_cliente;
+		this.cod_estabelecimento=cod_estabelecimento;
 		this.nome_estabelecimento = nome_estabelecimento;
 	}
 	
@@ -42,8 +46,31 @@ public class Conta {
 	public void setNome_estabelecimento(String nome_estabelecimento) {
 		this.nome_estabelecimento = nome_estabelecimento;
 	}
-	
+	public int getCod_conta() {
+		return cod_conta;
+	}
+
+	public void setCod_conta(int cod_conta) {
+		this.cod_conta = cod_conta;
+	}
+
+	public int getCod_cliente() {
+		return cod_cliente;
+	}
+
+	public void setCod_cliente(int cod_cliente) {
+		this.cod_cliente = cod_cliente;
+	}
+
+	public int getCod_estabeleciemento() {
+		return cod_estabelecimento;
+	}
+
+	public void setCod_estabeleciemento(int cod_estabeleciemento) {
+		this.cod_estabelecimento = cod_estabeleciemento;
+	}
+
 	public String toString() {
-		return "Código da conta: " + cod_conta + " Status da conta: " + status + " Nome do cliente: " + nome_cliente + " Nome do estabelecimento: " + nome_estabelecimento;
+		return "Código da conta: " + cod_conta + " Cod do cliente: " + cod_cliente + " Nome do cliente: " + nome_cliente + " Codigo do estabelecimento: " + cod_estabelecimento + " Nome do estabelecimento: " + nome_estabelecimento + " Status da conta: " + status ;
 	}
 }

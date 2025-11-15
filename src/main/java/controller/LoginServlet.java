@@ -17,11 +17,11 @@ import com.google.gson.Gson;
 import DAO.UsuarioDAO;
 import DTO.UsuarioDTO;
 
-@WebServlet(urlPatterns = { "/loginServlet", "/login" })
-public class loginServlet extends HttpServlet {
+@WebServlet("/login")
+public class LoginServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	public loginServlet() {
+	public LoginServlet() {
 		super();
 
 	}

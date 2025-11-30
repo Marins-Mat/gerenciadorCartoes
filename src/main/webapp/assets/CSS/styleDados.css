@@ -1,0 +1,85 @@
+
+
+.container {
+    min-width: 1200px;
+    min-height: 800px;
+    padding: 3rem;
+    width: 100%;
+}
+
+.linha-1{
+    background: #ffffff;
+    display: flex;
+    margin-bottom: 1rem;
+    width: 100%;
+    border: 1px solid black;
+    border-radius: 12px;
+    justify-content: space-between;
+}
+.linha-1 .nomeTitular{
+    align-items: center;
+    justify-content: flex-start;
+    padding: 0.25rem;
+    width: 80%;
+    border-right: 2px solid black;
+    
+}
+.linha-1 .statusConta{
+    padding: 0.25rem;
+    width: 20%;
+}
+
+
+.linha-2{
+    background: #ffffff;
+    display: flex;
+    margin-bottom: 1rem;
+    width: 100%;
+    border: 1px solid black;
+    border-radius: 12px;
+    justify-content: space-between;
+}
+
+.linha-2 .nomeEst{
+    
+    padding: 0.25rem;
+    width: 50%;
+}
+
+.linha-2 .statusCartao {
+    
+    padding: 0.25rem;
+    width: 30%;
+    border-right: 2px solid black;
+    border-left: 2px solid black;
+}
+
+.linha-2 .validadeCartao{
+    padding: 0.25rem;
+    width: 20%;
+}
+
+
+.dadosAtendimento{
+    display: flex;
+    width: 500px;
+    flex-direction: column;
+    padding: 0.75rem;
+    margin: 1.25rem;
+    border: 1px solid black;
+    border-radius: 8px;
+}
+.nomeDado{
+    width: 50%;
+    margin-right: 15px;
+    
+}
+
+.protocolo{
+    display: flex;
+}
+
+.data{
+    display: flex;
+    justify-content: flex-start;
+}

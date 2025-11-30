@@ -1,13 +1,14 @@
 package DTO;
 
-public class UsuarioDTO {
-	private int cod_usuario;
-	private String nome;
-	private String login;
-	private String senha;
+import model.Usuario;
 
-	public UsuarioDTO() {
-	}
+public class UsuarioDTO {
+	public int cod_usuario;
+	public String nome;
+	public String login;
+	public String senha;
+
+	public UsuarioDTO() {}
 
 	public UsuarioDTO(int cod_usuario, String nome, String login, String senha) {
 		this.cod_usuario = cod_usuario;
@@ -15,43 +16,14 @@ public class UsuarioDTO {
 		this.login = login;
 		this.senha = senha;
 	}
-
-	public UsuarioDTO(String login, String senha) {
-		super();
-		this.login = login;
-		this.senha = senha;
+	
+	public UsuarioDTO(Usuario usr) {
+		this.cod_usuario = usr.getId();
+		this.nome = usr.getNome();
+		this.login = usr.getLogin();
+		this.senha = usr.getSenha();
 	}
 
-	public int getCod_usuario() {
-		return cod_usuario;
-	}
-
-	public void setCod_usuario(int cod_usuario) {
-		this.cod_usuario = cod_usuario;
-	}
-
-	public String getNome() {
-		return nome;
-	}
-
-	public void setNome(String nome) {
-		this.nome = nome;
-	}
-
-	public String getLogin() {
-		return login;
-	}
-
-	public void setLogin(String login) {
-		this.login = login;
-	}
-
-	public String getSenha() {
-		return senha;
-	}
-
-	public void setSenha(String senha) {
-		this.senha = senha;
-	}
+	
 
 }

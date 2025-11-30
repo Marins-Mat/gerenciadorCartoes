@@ -5,7 +5,6 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import model.Usuario;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -21,10 +20,7 @@ import DTO.UsuarioDTO;
 public class LoginServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	public LoginServlet() {
-		super();
-
-	}
+	public LoginServlet() {}
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
@@ -40,17 +36,19 @@ public class LoginServlet extends HttpServlet {
 		Gson gson = new Gson();
 		UsuarioDTO usrDTO = gson.fromJson(reader, UsuarioDTO.class);
 
-		String login = usrDTO.getLogin();
-		String senha = usrDTO.getSenha();
+		String login = usrDTO.login;
+		String senha = usrDTO.senha;
 
 		UsuarioDAO userDAO = new UsuarioDAO();
-		Usuario usr = userDAO.validarUsuario(login, senha);
+		UsuarioDTO usr = userDAO.validarUsuario(login, senha);
 
 		boolean valido = usr != null;
+		
 		PrintWriter writer = response.getWriter();
 		String json = gson.toJson(Map.of("sucesso", valido));
 		writer.print(json);
 		writer.flush();
+		writer.close();
 
 	}
 

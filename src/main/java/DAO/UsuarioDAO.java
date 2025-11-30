@@ -4,11 +4,12 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
+import DTO.UsuarioDTO;
 import model.Usuario;
 
 public class UsuarioDAO extends DAO {
 
-	public Usuario validarUsuario(String login, String senha) {
+	public UsuarioDTO validarUsuario(String login, String senha) {
 		String sql = "Select * from usuario Where login = ? And senha = ?";
 		try {
 			Connection con = getConnection();
@@ -22,7 +23,8 @@ public class UsuarioDAO extends DAO {
 				Usuario usr = new Usuario();
 				usr.setNome(rs.getString("nome_usuario"));
 				usr.setLogin(rs.getString("login"));
-				return usr;
+				UsuarioDTO dto = new UsuarioDTO(usr);
+				return dto;
 			} else {
 				return null;
 			}

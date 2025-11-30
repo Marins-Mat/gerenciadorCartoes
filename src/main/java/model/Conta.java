@@ -3,19 +3,23 @@ package model;
 public class Conta {
 	private int cod_conta;
 	private String nome_cliente;
+	private double limite_total;
+	private double consumo_total;
 	private int cod_cliente;
 	private String nome_estabelecimento;
 	private int cod_estabelecimento;
 	private String status;
 	
 
-	public Conta(int cod_conta, int cod_cliente, String nome_cliente, String nome_estabelecimento, int cod_estabelecimento, String status) {
+	public Conta(int cod_conta, int cod_cliente, String nome_cliente, String nome_estabelecimento, int cod_estabelecimento, double limite_total, double consumo_total,String status) {
 		this.cod_conta = cod_conta;
 		this.status = status;
 		this.cod_cliente = cod_cliente;
 		this.nome_cliente = nome_cliente;
 		this.cod_estabelecimento=cod_estabelecimento;
 		this.nome_estabelecimento = nome_estabelecimento;
+		this.limite_total = limite_total;
+		this.consumo_total = consumo_total;
 	}
 	
 	public Conta() {
@@ -68,6 +72,31 @@ public class Conta {
 
 	public void setCod_estabeleciemento(int cod_estabeleciemento) {
 		this.cod_estabelecimento = cod_estabeleciemento;
+	}
+
+	
+	public double getLimite_total() {
+		return limite_total;
+	}
+
+	public void setLimite_total(double limite_total) {
+		this.limite_total = limite_total;
+	}
+
+	public double getConsumo_total() {
+		return consumo_total;
+	}
+
+	public void setConsumo_total(double consumo_total) {
+		this.consumo_total = consumo_total;
+	}
+
+	public int getCod_estabelecimento() {
+		return cod_estabelecimento;
+	}
+
+	public void setCod_estabelecimento(int cod_estabelecimento) {
+		this.cod_estabelecimento = cod_estabelecimento;
 	}
 
 	public String toString() {

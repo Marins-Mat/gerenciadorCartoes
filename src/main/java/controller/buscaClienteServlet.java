@@ -5,7 +5,6 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import model.Conta;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -14,7 +13,8 @@ import java.util.ArrayList;
 
 import com.google.gson.Gson;
 
-import DAO.ClienteDAO;
+import DAO.ContaDAO;
+import DTO.ContaDTO;
 
 @WebServlet("/buscaCliente")
 public class buscaClienteServlet extends HttpServlet {
@@ -46,14 +46,14 @@ public class buscaClienteServlet extends HttpServlet {
 		CpfRequest req = gson.fromJson(reader, CpfRequest.class);
 		String cpf = req.cpf;
 
-		ClienteDAO dao = new ClienteDAO();
-		ArrayList<Conta> contas = dao.pegarCartoes(cpf);
+		ContaDAO dao = new ContaDAO();
+		ArrayList<ContaDTO> contas = dao.listarContas(cpf);
 
 		PrintWriter writer = response.getWriter();
 		String json = gson.toJson(contas);
 		writer.print(json);
 		writer.flush();
-
+			
 	}
 
 }
